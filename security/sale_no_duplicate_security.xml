@@ -2,7 +2,7 @@
     <!-- Grupo de usuarios con permiso para duplicar pedidos de venta -->
     <record id="group_sale_duplicate_allowed" model="res.groups">
         <field name="name">Allow Sale Duplicates</field>
-        <!-- LÍNEA MODIFICADA: Se cambió 'base.module_category_sales_management' a 'sale_management.module_category_sale_management' -->
-        <field name="category_id" ref="sale_management.module_category_sale_management"/>
+        <!-- LÍNEA MODIFICADA: Se cambió 'sale_management.module_category_sale_management' a 'sale_management.module_category_sales_management' -->
+        <field name="category_id" ref="sale_management.module_category_sales_management"/>
     </record>
 </odoo>
