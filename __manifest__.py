@@ -12,7 +12,8 @@
     'website': 'https://alphaqueb.com',
     'license': 'LGPL-3',
     'depends': [
-        'sale'
+        'sale',
+        'sale_management',
     ],
    'data': [
         'security/sale_no_duplicate_security.xml',
