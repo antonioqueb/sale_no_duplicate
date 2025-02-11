@@ -1,0 +1,14 @@
+<odoo>
+    <record id="view_sale_order_form_no_duplicate" model="ir.ui.view">
+        <field name="name">sale.order.form.no.duplicate</field>
+        <field name="model">sale.order</field>
+        <!-- Referencia a la vista de formulario estándar de Odoo para heredar -->
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <!-- Oculta el botón Duplicar en el formulario de los pedidos de venta -->
+            <xpath expr="//form" position="attributes">
+                <attribute name="duplicate">false</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
