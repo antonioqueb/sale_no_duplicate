@@ -1,0 +1,11 @@
+<odoo>
+    <!-- Grupo de usuarios con permiso para duplicar pedidos de venta -->
+    <record id="group_sale_duplicate_allowed" model="res.groups">
+        <field name="name">Allow Sale Duplicates</field>
+        <field name="category_id" ref="base.module_category_sales_management"/>
+        <!--
+            "category_id" indica dónde se agrupa visualmente el permiso 
+            en la interfaz de Ajustes/Usuarios dentro de Odoo.
+        -->
+    </record>
+</odoo>

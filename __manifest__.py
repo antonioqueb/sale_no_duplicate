@@ -14,7 +14,9 @@
     'depends': [
         'sale'
     ],
-    'data': [
+   'data': [
+        'security/sale_no_duplicate_security.xml',
+        'security/ir.model.access.csv',
         'views/sale_order_views.xml',
     ],
     'installable': True,

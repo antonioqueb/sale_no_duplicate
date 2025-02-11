@@ -5,13 +5,12 @@ class SaleOrder(models.Model):
 
     def copy(self, default=None):
         """
-        Sobrescribe el método copy para restringir
-        la duplicación de registros de venta.
+        Sobrescribe el método `copy` para permitir la duplicación
+        solo a usuarios pertenecientes al grupo "Allow Sale Duplicates".
         """
-        raise exceptions.UserError(
-            'La duplicación de pedidos de venta está restringida.'
-        )
-        # En caso de que quieras permitir duplicar con
-        # ciertas condiciones, añade la lógica condicional
-        # aquí. De lo contrario, simplemente se lanza el error.
-        # return super(SaleOrder, self).copy(default)
+        # Verifica si el usuario actual está en el grupo que habilita la duplicación
+        if not self.env.user.has_group('sale_no_duplicate.group_sale_duplicate_allowed'):
+            raise exceptions.UserError(
+                'No tienes permiso para duplicar este pedido de venta.'
+            )
+        return super(SaleOrder, self).copy(default)

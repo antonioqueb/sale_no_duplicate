@@ -1,13 +1,26 @@
 <odoo>
-    <record id="view_sale_order_form_no_duplicate" model="ir.ui.view">
-        <field name="name">sale.order.form.no.duplicate</field>
+    <!-- 1. Vista para deshabilitar el botón "Duplicar" a todos -->
+    <record id="view_sale_order_form_inherit_no_duplicate" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.no.duplicate</field>
         <field name="model">sale.order</field>
-        <!-- Referencia a la vista de formulario estándar de Odoo para heredar -->
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
-            <!-- Oculta el botón Duplicar en el formulario de los pedidos de venta -->
             <xpath expr="//form" position="attributes">
                 <attribute name="duplicate">false</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- 2. Vista para el grupo que permite duplicar (restaura el botón) -->
+    <record id="view_sale_order_form_inherit_allow_duplicate" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.allow.duplicate</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <!-- Este ajuste se aplica ÚNICAMENTE a los usuarios del grupo "Allow Sale Duplicates" -->
+        <field name="groups_id" eval="[(6, 0, [ref('sale_no_duplicate.group_sale_duplicate_allowed')])]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="duplicate">true</attribute>
             </xpath>
         </field>
     </record>
